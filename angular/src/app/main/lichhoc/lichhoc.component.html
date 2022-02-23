@@ -1,0 +1,347 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Quản lý lịch học</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            
+            <li class="breadcrumb-item active">Fixed Layout</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-1">
+                    <div class="col-sm-9">
+                       
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+                                        Add
+                                    </button>
+                                </div>
+                                                    <!-- TÌM KIẾM -->
+
+                       <div class="col-md-3">
+                        <div class="">
+                          <input type="text" class="form-control"
+                                placeholder="Tìm kiếm ở đây" [(ngModel)]="searchText">
+                        </div>
+                    </div>
+                    <!-- ///////////// -->
+                        
+
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">STT</th>                                   
+                                    <th scope="col">Mã lớp</th>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">Ngày học</th>
+                                    <th scope="col">Phòng học</th>
+                                    <th scope="col">Giao viên</th>
+                                    <th scope="col">Tiết học</th>
+                                    <th scope="col">Buổi học</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <!-- | paginate: { itemsPerPage: 10,
+                                currentPage: page,
+                                 totalItems:totalLength } |filter:searchText -->
+                            <tbody>
+                                <tr *ngFor="let i = index;let item of lichhocs| paginate: { itemsPerPage: 10,
+                                    currentPage: page,
+                                     totalItems:totalLength } | filter:searchText">
+                                    <td>{{ i + 1 }}</td>
+
+                                    
+                                    
+                                    <td>{{item.malop}}</td>
+                                    <td>{{item.mahp}}</td>
+                                    <td>{{item.ngayhoc | date:'longDate'}}</td>
+                                    <td>{{item.phonghoc}}</td>
+                                    <td>{{item.giaovien}}</td>
+                                    <td>{{item.tiethoc}}</td>
+                                    <td>{{item.buoihoc}}</td>
+                                   
+                                    <!-- <td>
+                                        <span *ngIf="item.status;else unactive"
+                                            class="badge badge-success">Active</span>
+                                        <ng-template #unactive>
+                                            <span class="badge badge-danger">Unactive</span>
+                                        </ng-template>
+                                    </td> -->
+                                    <td>
+                                        <button type="button" class="btn btn-default mr-1"
+                                            data-toggle="modal" data-target="#exampleModal1"
+                                            (click)="onEdit(item.id)"><i class="fa fa-edit"
+                                                style="color:red"></i></button>
+                                        <button type="button" class="btn btn-default"
+                                            (click)="deleteClick(item)"><i class="fa fa-trash"
+                                                style="color:red"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                 
+                       <!-- PHÂN TRANG -->
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                    <!-- ////// -->
+                </div>
+                
+            </div>
+            
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm lịch học</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formAdd">
+                    <div class="form-group">
+                       
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mã lớp</label>
+                        <select class="form-control" formControlName="malop">
+                            <ng-container *ngFor="let lophocs of lophocs">
+                                <option [ngValue]="lophocs.malop">{{lophocs.tenlop}} </option>
+                            </ng-container>
+                        </select>
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.malop?.errors?.required && formAdd.controls.malop?.touched">
+                            Tên lớp không được để trống!
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mã học phần</label>
+                        <select class="form-control" formControlName="mahp">
+                            <ng-container *ngFor="let hocphans of hocphans">
+                                <option [ngValue]="hocphans.mahp">{{hocphans.tenhp}} </option>
+                            </ng-container>
+                        </select>
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.mahp?.errors?.required && formAdd.controls.mahp?.touched">
+                            ma hp  không được để trống!
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Ngày học</label>
+                        <input type="date" formControlName="ngayhoc"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập ngày học">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.ngayhoc?.errors?.required && formAdd.controls.ngayhoc?.touched">
+                            ngày học không được để trống!
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Phòng học</label>
+                        <input type="text" formControlName="phonghoc"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="phòng học">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.phonghoc?.errors?.required && formAdd.controls.phonghoc?.touched">
+                            phòng học không được để trống!
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">giaovien</label>
+                        <input type="text" formControlName="giaovien"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập giáo viên">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.giaovien?.errors?.required && formAdd.controls.giaovien?.touched">
+                            giáo viên không được để trống!
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">tiethoc</label>
+                        <input type="text" formControlName="tiethoc"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập tiết học">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.tiethoc?.errors?.required && formAdd.controls.tiethoc?.touched">
+                            tiết học không được để trống!
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">buoihoc</label>
+                        <input type="text" formControlName="buoihoc"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập buổi học">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.buoihoc?.errors?.required && formAdd.controls.buoihoc?.touched">
+                            buổi học không được để trống!
+                        </small>
+                    </div>
+                   
+                </form>
+               
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeClick()" aria-label="Close" data-dismiss="modal" type="button" class="btn btn-default">Close</button>
+                <button type="submit" (click)="add()" [disabled]="!formAdd.valid"  class="btn btn-primary"><i
+                    class="fa fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sửa môn học</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+           
+            <form [formGroup]="formEdit">
+                <div class="form-group">
+                   
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mã lớp</label>
+                    <select class="form-control" formControlName="malop">
+                        <ng-container *ngFor="let lophocs of lophocs">
+                            <option [ngValue]="lophocs.malop">{{lophocs.tenlop}} </option>
+                        </ng-container>
+                    </select>
+                    <small class="form-text text-danger"
+                        *ngIf="formAdd.controls.malop?.errors?.required && formAdd.controls.malop?.touched">
+                        Tên lớp không được để trống!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mã học phần</label>
+                    <select class="form-control" formControlName="mahp">
+                        <ng-container *ngFor="let hocphans of hocphans">
+                            <option [ngValue]="hocphans.mahp">{{hocphans.tenhp}} </option>
+                        </ng-container>
+                    </select>
+                    <small class="form-text text-danger"
+                        *ngIf="formAdd.controls.mahp?.errors?.required && formAdd.controls.mahp?.touched">
+                        ma hp  không được để trống!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Ngày học</label>
+                    <input type="date" formControlName="ngayhoc"
+                        class="form-control form-control-sm" id="exampleInputPassword1"
+                        placeholder="nhập gvcn">
+                    <small class="form-text text-danger"
+                        *ngIf="formAdd.controls.ngayhoc?.errors?.required && formAdd.controls.ngayhoc?.touched">
+                        ngày học không được để trống!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Phòng học</label>
+                    <input type="text" formControlName="phonghoc"
+                        class="form-control form-control-sm" id="exampleInputPassword1"
+                        placeholder="nhập khoa">
+                    <small class="form-text text-danger"
+                        *ngIf="formAdd.controls.phonghoc?.errors?.required && formAdd.controls.phonghoc?.touched">
+                        phonghoc không được để trống!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">giaovien</label>
+                    <input type="text" formControlName="giaovien"
+                        class="form-control form-control-sm" id="exampleInputPassword1"
+                        placeholder="nhập khoa">
+                    <small class="form-text text-danger"
+                        *ngIf="formAdd.controls.giaovien?.errors?.required && formAdd.controls.giaovien?.touched">
+                        giaovien không được để trống!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">tiethoc</label>
+                    <input type="text" formControlName="tiethoc"
+                        class="form-control form-control-sm" id="exampleInputPassword1"
+                        placeholder="nhập khoa">
+                    <small class="form-text text-danger"
+                        *ngIf="formAdd.controls.tiethoc?.errors?.required && formAdd.controls.tiethoc?.touched">
+                        tiethoc không được để trống!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">buoihoc</label>
+                    <input type="text" formControlName="buoihoc"
+                        class="form-control form-control-sm" id="exampleInputPassword1"
+                        placeholder="nhập khoa">
+                    <small class="form-text text-danger"
+                        *ngIf="formAdd.controls.buoihoc?.errors?.required && formAdd.controls.buoihoc?.touched">
+                        buoihoc không được để trống!
+                    </small>
+                </div>
+               
+            </form>
+            <div class="modal-footer">
+                <button (click)="closeClick()" aria-label="Close" data-dismiss="modal" type="button" class="btn btn-default">Close</button>
+                <button type="submit" (click)="update()"  class="btn btn-primary"><i
+                    class="fa fa-plus"></i></button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+<p-toast></p-toast>
+
+<p-confirmDialog [style]="{width: '50vw'}" rejectButtonStyleClass="p-button-text">
+
+</p-confirmDialog>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

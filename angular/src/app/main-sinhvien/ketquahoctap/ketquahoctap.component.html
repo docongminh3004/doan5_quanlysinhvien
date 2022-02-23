@@ -1,0 +1,74 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <h4 class="page-title">Kết quả học tập </h4>
+                </div>
+
+            </div> <!-- end row -->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <!-- <h4 class="mt-0 header-title mb-4">Suppliers</h4> -->
+                            <div class="row mb-1">
+                                <div class="col-sm-7">
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal" (click)="clearFormAdd()" data-backdrop="static" data-keyboard="false">
+                                        Add
+                                    </button> -->
+
+                                </div>
+                                <div class="col-md-2">
+
+
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- <div class="">
+                                        <input type="search" id="form1" autocomplete="off" [(ngModel)]="searchText"
+                                            class="form-control" placeholder=" Tìm kiếm tại đây... " />
+                                    </div> -->
+                                </div>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">STT</th>
+
+                                            <th scope="col">Tên học phần</th>
+                                            <th scope="col">Điểm thành phần</th>
+                                            <th scope="col">Điểm thi</th>
+                                            <th scope="col">TBCHP</th>
+                                            <th scope="col">Điểm chữ</th>
+                                            
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let i = index;let item of sinhviens">
+                                            <td>{{ i + 1 }}</td>
+
+                                            <td>{{item.tenhp}}</td>
+                                            <td>{{item.diemlan1}}</td>
+                                            <td>{{item.diemlan2}}</td>
+                                            <td>{{item.diemtb}}</td>
+                                            <td>{{item.ghichu}}</td>
+                                         
+                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+    </div>
+    <!-- container-fluid -->
+</div>

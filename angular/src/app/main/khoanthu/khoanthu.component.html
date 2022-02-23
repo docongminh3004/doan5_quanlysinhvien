@@ -1,0 +1,282 @@
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <h4 class="page-title">Thông tin khoản thu: </h4>
+                </div>
+
+            </div> <!-- end row -->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <!-- <h4 class="mt-0 header-title mb-4">Suppliers</h4> -->
+                            <div class="row mb-1">
+                                <div class="col-sm-9">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="clearFormAdd()"
+                                        data-backdrop="static" data-keyboard="false">
+                                        Add
+                                    </button>
+                                
+                                </div>
+                                <!-- <div class="col-sm-3" style="display: flex;">
+                                    <input class="form-control" autocomplete="off"  type="search" 
+                                        [(ngModel)]="txtSearchName" placeholder="Tìm kiếm tại đây...">
+                                    <button type="button"  class="btn btn-success">
+                                        <i class="fas fa-search fa-fw"></i></button>
+                                       
+                                </div> -->
+                            </div>
+                            <!-- <div class="row mb-1 mt-3">
+                                <div class="col-sm-4">
+                                    <label class="mr-1">Hiển thị </label>
+                                    <select class="form-control form-control-sm mr-1" [(ngModel)]="pageSize"
+                                        (ngModelChange)="loadData(1)" style="width: 100px;display: inline!important;">
+
+                                        <option [value]="3">3</option>
+                                        <option [value]="5">5</option>
+                                        <option [value]="10">10</option>
+                                        <option [value]="20">20</option>
+                                        <option [value]="25">25</option>
+                                        <option [value]="30">30</option>
+                                    </select>
+                                    <label> dòng</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="mr-1">Sắp xếp theo hoc ki </label>
+                                    <select class="form-control form-control-sm mr-1" [(ngModel)]="sortByName"
+                                        (ngModelChange)="loadData(1)" style="width: 100px;display: inline!important;">
+                                        
+                                        <option [value]="'asc'">Tăng dần</option>
+                                        <option [value]="'desc'">Giảm dần</option>
+                                        <option [value]="'reset'">Reset</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4" style="float: right;">
+                                    <label class="mr-1">Sắp xếp theo ngày tạo </label>
+                                    <select class="form-control form-control-sm mr-1" [(ngModel)]="sortByCreatedDate"
+                                        (ngModelChange)="loadData(1)" style="width: 100px;display: inline!important;">
+                                        <option [value]="'desc'">Mới nhất</option>
+                                        <option [value]="'asc'">Cũ nhất</option>
+                                        <option [value]="'reset'">Reset</option>
+                                    </select>
+                                </div>
+                              
+                             
+
+                            </div> -->
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Mã SV</th>
+                                            <th scope="col">Tên SV</th>
+                                            <th scope="col">Khoản thu</th>
+                                            <th scope="col">Ngày tạo</th>
+                                            <th scope="col">Ngày nộp</th>
+                                            <th scope="col">Người tạo</th>
+                                            <th scope="col">Trạng thái</th>
+                                            <th scope="col">Học kì</th>
+                                            <!-- <th scope="col">Đợt thu</th> -->
+                                            <th scope="col">Học phí</th>
+                                            <th scope="col">Đã nộp</th>
+                                            <th scope="col">Người nhận</th>
+                                            <th scope="col">Năm học</th>
+                                            <!-- <th scope="col">Tên khoản thu</th>
+                                            <th scope="col">Action</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let i = index;let item of khoanthus| paginate: { itemsPerPage: 10,
+                                            currentPage: page,
+                                             totalItems:totalLength }">
+                                            <td>{{ i + 1 }}</td>
+
+                                            <td>{{item.masv}}</td>
+                                            <td>{{item.tensv}}</td>
+                                           
+                                            <td>
+                                                <span *ngIf="item.khoanthu1==2;"
+                                                    class="badge badge-success">Tiền bảo hiểm </span>
+                                                <span *ngIf="item.khoanthu1==1;"
+                                                    class="badge badge-success">Tiền học </span>
+                                            
+                                            </td>
+                                            <td>{{item.ngaytao | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{item.ngaynop | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{item.nguoitao}}</td>
+                                            <td>
+                                                <span *ngIf="item.status==1;"
+                                                class="badge badge-danger">Nộp thiếu</span>
+                                                <span *ngIf="item.status==2;"
+                                                class="badge badge-success">Đã nộp</span>
+                                                <span *ngIf="item.status==3;"
+                                                class="badge badge-danger">Chưa Nộp</span>
+                                               
+                                            </td>
+                                            <td>{{item.hocki}}</td>
+                                            <!-- <td>{{item.dotthu}}</td> -->
+                                            <td>{{item.hocphi | currency : 'VND' : true }}</td>
+                                            <td>{{item.sotiendanop  | currency : 'VND' : true }}</td>
+                                            <td>{{item.nguoinhan}}</td>
+                                            <td>{{item.namhoc}}</td>
+                                            <!-- <td>{{item.tenkhoanthu}}</td> -->
+                                       
+                             
+                                            <!-- <td>
+                                                <span *ngIf="item.status;else unactive"
+                                                    class="badge badge-success">Active</span>
+                                                <ng-template #unactive>
+                                                    <span class="badge badge-danger">Unactive</span>
+                                                </ng-template>
+                                            </td> -->
+                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                                     <!-- PHÂN TRANG -->
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                    <!-- ////// -->
+                            <!-- <ngb-pagination [collectionSize]="totalRecords" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="true"
+                                [maxSize]="10" [rotate]="true" (pageChange)="loadData($event)">
+                            </ngb-pagination> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+    </div>
+    <!-- container-fluid -->
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" style="width:70%" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm khoản thu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <form action="" [formGroup]="formAdd">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên sinh viên</label>
+                        <select class="form-control" formControlName="masv">
+                            <ng-container *ngFor="let sv of sinhviens">
+                                <option [ngValue]="sv.masv">{{sv.tensv}} </option>
+                            </ng-container>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">hoc ki</label>
+                        <select class="form-control" formControlName="hocki">
+                            
+                                <option [ngValue]="1">học kì 1 </option>
+                                <option [ngValue]="2">học kì 2 </option>
+                            
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">khoản thu</label>
+                        <select class="form-control" formControlName="khoanthu1">
+                            
+                                <option [ngValue]="1">học phí </option>
+                                <option [ngValue]="2">bảo hiểm </option>
+                            
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Trạng thái</label>
+                        <select class="form-control" formControlName="status">
+                            
+                                <option [ngValue]="1">Nộp thiếu </option>
+                                <option [ngValue]="2">Đã nộp </option>
+                                <option [ngValue]="3">Chưa nộp</option>
+                            
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Năm học</label>
+                        <input type="text" formControlName="namhoc"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập năm học">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.namhoc?.errors?.required && formAdd.controls.namhoc?.touched">
+                            năm học không được để trống!
+                        </small>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="exampleInputPassword1">Sĩ số</label>
+                        <input type="text" formControlName="namhoc"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập nam hoc">
+                      
+                    </div> -->
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Học phí</label>
+                        <input type="text" formControlName="hocphi"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập học phí">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.hocphi?.errors?.required && formAdd.controls.hocphi?.touched">
+                            học phí không được để trống!
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Ngày nộp</label>
+                        <input type="date" formControlName="ngaynop"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập ngày nộp">
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Số tiền đã nộp</label>
+                        <input type="text" formControlName="sotiendanop"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập số tiền đã nộp">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.sotiendanop?.errors?.required && formAdd.controls.sotiendanop?.touched">
+                            số tiền đã nộp không được để trống!
+                        </small>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="exampleInputPassword1">Người nhận</label>
+                        <input type="text" formControlName="nguoinhan"
+                            class="form-control form-control-sm" id="exampleInputPassword1"
+                            placeholder="nhập học phí">
+                        <small class="form-text text-danger"
+                            *ngIf="formAdd.controls.nguoinhan?.errors?.required && formAdd.controls.nguoinhan?.touched">
+                            học phí không được để trống!
+                        </small>
+                    </div> -->
+
+                   
+                </div>
+                <div class="modal-footer">
+                    <button (click)="closeClick()" aria-label="Close" data-dismiss="modal" type="button"
+                        class="btn btn-default">Close</button>
+                    <button type="button" (click)="add()" class="btn btn-primary">Thêm mới </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <p-toast></p-toast>
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner> -->

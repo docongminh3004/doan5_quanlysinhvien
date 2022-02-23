@@ -1,0 +1,59 @@
+<div class="card-body">
+    <div class="row mb-1">
+        <div class="col-sm-9">
+           
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+                            Add
+                        </button> -->
+            <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>                                   
+                        <th scope="col">Mã lớp</th>
+                        <th scope="col">Mã học phần</th>
+                        <th scope="col">Ngày học</th>
+                        <th scope="col">Phòng học</th>
+                        <th scope="col">Giáo viên</th>
+                        <th scope="col">Tiết học</th>
+                        <th scope="col">Buổi học</th>
+                     
+                    </tr>
+                </thead>
+                <!-- | paginate: { itemsPerPage: 10,
+                    currentPage: page,
+                     totalItems:totalLength } |filter:searchText -->
+                <tbody>
+                    <tr *ngFor="let i = index;let item of lichhocs">
+                        <td>{{ i + 1 }}</td>
+
+                        
+                        
+                        <td>{{item.malop}}</td>
+                        <td>{{item.tenhp}}</td>
+                        <td>{{item.ngayhoc | date:'longDate'}}</td>
+                        <td>{{item.phonghoc}}</td>
+                        <td>{{item.giaovien}}</td>
+                        <td>{{item.tiethoc}}</td>
+                        <td>{{item.buoihoc}}</td>
+                       
+                        <!-- <td>
+                            <span *ngIf="item.status;else unactive"
+                                class="badge badge-success">Active</span>
+                            <ng-template #unactive>
+                                <span class="badge badge-danger">Unactive</span>
+                            </ng-template>
+                        </td> -->
+                     
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     
+
+    </div>
+</div>

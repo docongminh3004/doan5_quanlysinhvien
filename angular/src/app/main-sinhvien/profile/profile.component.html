@@ -1,0 +1,280 @@
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle"
+                     src="http://localhost:33970/Image/sinhvien/{{user.anhcmnd}}"
+                     alt="User profile picture">
+              </div>
+
+              <h3 class="profile-username text-center">{{user.tensv}}</h3>
+
+              <p class="text-muted text-center">{{user.chuyennganh}}</p>
+
+              <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                  <b>Ngày sinh</b> <a class="float-right">{{user.ngaysinh |date:'dd / MM / yyyy'}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Mã lớp</b> <a class="float-right">{{user.malop}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Mã sinh viên</b> <a class="float-right">{{user.masv}}</a>
+                </li>
+              </ul>
+
+              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+          <!-- About Me Box -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Thông tin cá nhân</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <strong><i class="fas fa-book mr-1"></i> Giáo dục</strong>
+
+              <p class="text-muted">
+                Cử nhân đại học
+              </p>
+
+              <hr>
+
+              <strong><i class="fas fa-map-marker-alt mr-1"></i> Địa điểm</strong>
+
+              <p class="text-muted">Hưng yên</p>
+
+              <hr>
+
+              <strong><i class="fas fa-pencil-alt mr-1"></i> Kỹ năng</strong>
+
+              <p class="text-muted">Lập trình viên chuyên nghiệp</p>
+
+              <hr>
+
+              <!-- <strong><i class="far fa-file-alt mr-1"></i> Ghi chú</strong>
+
+              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p> -->
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header p-2">
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Hồ Sơ Cá Nhân</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li> -->
+              </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="active tab-pane" id="activity">
+                  <div class="needs-validation" novalidate>
+                    <div class="form-row">
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">First name</label>
+                        <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="tensv"  placeholder="First name" value="Mark" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom02">Địa chỉ</label>
+                        <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="diachi" placeholder="Last name" value="Otto" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustomUsername">que quan</label>
+                        <div class="input-group">
+                       
+                          <input type="text" class="form-control" id="validationCustomUsername" [(ngModel)]="quequan" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                          <div class="invalid-feedback">
+                            Please choose a username.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">Ngày sinh</label>
+                        <input type="date" class="form-control" id="validationCustom01" [(ngModel)]="ngaysinh"  placeholder="First name" value="Mark" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom02">Lop </label>
+                        <input type="text" class="form-control" id="validationCustom02"  disabled [(ngModel)]="malop" placeholder="Last name" value="Otto" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustomUsername">Facebook</label>
+                        <div class="input-group">
+                         
+                          <input type="text" class="form-control" id="validationCustomUsername" [(ngModel)]="facebook" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                          <div class="invalid-feedback">
+                            Please choose a username.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">email </label>
+                        <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="email"  placeholder="First name" value="Mark" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom02">dienthoai</label>
+                        <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="dienthoai" placeholder="Last name" value="Otto" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustomUsername">dan toc</label>
+                        <div class="input-group">
+                       
+                          <input type="text" class="form-control" id="validationCustomUsername" [(ngModel)]="dantoc" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                          <div class="invalid-feedback">
+                            Please choose a username.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">ton giao</label>
+                        <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="tongiao"  placeholder="First name" value="Mark" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom02">quoc tich</label>
+                        <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="quoctich" placeholder="Last name" value="Otto" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustomUsername">cmnd</label>
+                        <div class="input-group">
+                        
+                          <input type="text" class="form-control" id="validationCustomUsername" [(ngModel)]="cmnd" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                          <div class="invalid-feedback">
+                            Please choose a username.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">he dao tao</label>
+                        <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="hedaotao"  placeholder="First name" value="Mark" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom02">nganh hoc</label>
+                        <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="nganhhoc" placeholder="Last name" value="Otto" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustomUsername">chuyen nganh</label>
+                        <div class="input-group">
+                         
+                          <input type="text" class="form-control" id="validationCustomUsername" [(ngModel)]="chuyennganh" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                          <div class="invalid-feedback">
+                            Please choose a username.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">nien khoa</label>
+                        <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="nienkhoa"  placeholder="First name" value="Mark" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                     
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustom02">gioitinh</label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" [(ngModel)]="gioitinh" [value]="true">
+                          <label style="margin-left: 20px;" class="form-check-label">
+                            Nam
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" [(ngModel)]="gioitinh" [value]="false">
+                          <label style="margin-left: 20px;" class="form-check-label">
+                            Nữ
+                          </label>
+                        </div>
+                      
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label for="validationCustomUsername">anhthe</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                           
+                          </div>
+                          <input type="file" (change)="uploadPhoto($event)" class="form-control" />
+                          <div class="invalid-feedback">
+                            Please choose a username.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   
+                  
+                    <div class="col-md-6"><input type="hidden" class="form-control" value="" [(ngModel)]="masv" ></div>
+                    <button class="btn btn-primary" (click)="update()" type="button">cap nhat lai</button>
+                  </div>
+                </div>
+                <!-- /.tab-pane -->
+              
+                <!-- /.tab-pane -->
+
+                <div class="tab-pane" id="settings">
+               
+                  
+                  
+                </div>
+                <!-- /.tab-pane -->
+              </div>
+              <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>

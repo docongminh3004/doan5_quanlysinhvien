@@ -1,0 +1,107 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <h4 class="page-title">Khoản thu </h4>
+                </div>
+
+            </div> <!-- end row -->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <!-- <h4 class="mt-0 header-title mb-4">Suppliers</h4> -->
+                            <div class="row mb-1">
+                                <div class="col-sm-7">
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal" (click)="clearFormAdd()" data-backdrop="static" data-keyboard="false">
+                                        Add
+                                    </button> -->
+
+                                </div>
+                                <div class="col-md-2">
+
+
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- <div class="">
+                                        <input type="search" id="form1" autocomplete="off" [(ngModel)]="searchText"
+                                            class="form-control" placeholder=" Tìm kiếm tại đây... " />
+                                    </div> -->
+                                </div>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">STT</th>
+
+                                            
+                                            <th scope="col">Mã SV</th>
+                                            <th scope="col">Tên SV</th>
+                                            <th scope="col">Người nhận</th>
+                                            <th scope="col">Học kì</th>
+                                            <th scope="col">Năm học</th>
+                                            <th scope="col">Khoản thu</th>
+                                            <th scope="col">Trạng thái</th>
+                                            <!-- <th scope="col">Đợt thu</th> -->
+                                            <th scope="col">Học phí</th>
+                                            <th scope="col">Đã nộp</th>
+                                            <th scope="col">Ngày nộp</th>
+                                            <th scope="col">Ngày tạo</th>
+                                            <th scope="col">Người tạo</th>
+                                           
+  
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let i = index;let item of sinhviens">
+                                            <td>{{ i + 1 }}</td>
+
+                                            <td>{{item.masv}}</td>
+                                            <td>{{item.tensv}}</td>
+                                            <td>{{item.nguoinhan}}</td>
+                                            <td>{{item.hocki}}</td>
+                                            <td>{{item.namhoc}}</td>
+                                       
+                                            <td>
+                                                <span *ngIf="item.khoanthu1==2;"
+                                                    class="badge badge-success">Tiền bảo hiểm </span>
+                                                <span *ngIf="item.khoanthu1==1;"
+                                                    class="badge badge-success">Tiền học </span>
+                                            
+                                            </td>
+                                           
+                                            <td>
+                                                <span *ngIf="item.status==1;"
+                                                class="badge badge-danger">Nộp thiếu</span>
+                                                <span *ngIf="item.status==2;"
+                                                    class="badge badge-success">Đã nộp</span>
+                                                    <span *ngIf="item.status==3;"
+                                                    class="badge badge-danger"> chưa Nộp</span>
+                                               
+                                            </td>
+                                            <!-- <td>{{item.dotthu}}</td> -->
+                                            <td>{{item.hocphi | currency : 'VND' : true}}</td>
+                                            <td>{{item.sotiendanop | currency : 'VND' : true}}</td>
+                                            <td>{{item.ngaytao | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{item.ngaynop | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{item.nguoitao}}</td>
+                                         
+                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+    </div>
+    <!-- container-fluid -->
+</div>

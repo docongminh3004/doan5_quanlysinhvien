@@ -1,0 +1,102 @@
+<form action="" [formGroup]="formAdd">
+    <table class="table table-hover table-bordered">
+        <tbody>
+            <tr>
+                <td colspan="4" style="text-align:center;vertical-align:middle">
+                    <h4>THÔNG TIN KÊ KHAI TIÊM VACCINE</h4>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left:20px;vertical-align:middle"><label> Mã sinh viên</label> </td>
+                <td style="padding-left:20px">
+                    <input type="text" formControlName="masv" placeholder="nhập mã sinh viên" class="form-control" id="txtCanCuoc" value="">
+                </td>
+                <td style="padding-left:20px;vertical-align:middle"><label> Họ tên </label> </td>
+                <td style="padding-left:20px">
+                    <input type="text" formControlName="hoten" placeholder="nhập họ tên sinh viên" class="form-control" id="txtSoTheBHYT" value="">
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left:20px;vertical-align:middle"><label> Số thẻ căn cước</label> </td>
+                <td style="padding-left:20px">
+                    <input type="text" formControlName="cmnd" placeholder="nhap so cmnd" class="form-control" id="txtCanCuoc" value="">
+                </td>
+                <td style="padding-left:20px;vertical-align:middle"><label> Số thẻ bảo hiểm y tế</label> </td>
+                <td style="padding-left:20px">
+                    <input type="text" formControlName="sobaohiem" placeholder="nhap so bao hiem" class="form-control" id="txtSoTheBHYT" value="">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left:20px;vertical-align:middle"><label> Số Điện thoại liên hệ</label> </td>
+                <td style="padding-left:20px">
+                    <input type="text" formControlName="dienthoai" placeholder="nhap so dien thoai" class="form-control" id="SDT_lienhe" value="">
+                </td>
+                <td style="padding-left:20px;vertical-align:middle"><label> Chưa tiêm Vaccine</label> </td>
+                <td style="padding-left:20px">
+                    <input type="checkbox" formControlName="status" id="chkChuaTiem">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left:20px;vertical-align:middle"><label> Nơi cứ trú trước khi đến trường:<br>(Ghi đầy
+                        đủ Xã, Huyện, Tỉnh)</label> </td>
+                <td style="padding-left:20px">
+                    <textarea rows="5" cols="4" formControlName="diachi" placeholder="nhap dia chi" class="form-control" id="Noi_cu_tru"></textarea>
+                </td>
+                <td style="padding-left:20px;vertical-align:middle"><label> Hiện tại có biểu hiện<br>sốt, ho, mệt mỏi…
+                        hay không?</label> </td>
+                <td style="padding-left:20px">
+                    <textarea rows="5" cols="4" formControlName="bieuhien" placeholder="nhap bieu hien" class="form-control" id="Bieu_hien_benh"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left:20px;vertical-align:middle"><label> Ngày tiêm mũi 1</label> </td>
+                <td style="padding-left:20px">
+                    <input type="date" formControlName="ngaytiemmui1" placeholder="nhap ngay tiem mui 1" class="form-control" id="dtNgay1" >
+                </td>
+                <td style="padding-left:20px;vertical-align:middle"><label> Ngày tiêm mũi 2</label> </td>
+                <td style="padding-left:20px">
+                    <input type="date" formControlName="ngaytiemmui2" placeholder="nhap ngay tiem mui 2" class="form-control" id="dtNgay2" >
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left:20px;vertical-align:middle"><label> Loại Vaccine mũi 1</label> </td>
+                <td style="padding-left:20px">
+                    <select  formControlName="loaivacxin" placeholder="nhap loai vacxin" class="form-control" id="txtLoaiVacxin1">
+                        <option value="0"></option>
+                        <option value="1">AstraZeneca</option>
+                        <option value="2">Moderna</option>
+                        <option value="3">Vero Cell</option>
+                        <option value="4">Pfize</option>
+                        <option value="5">Khác</option>
+                    </select>
+                </td>
+                <td style="padding-left:20px;vertical-align:middle"><label> Loại Vaccine mũi 2</label> </td>
+                <td style="padding-left:20px">
+                    <select formControlName="loaivacxin2" placeholder="nhap loai vacxin2"  class="form-control" id="txtLoaiVacxin2">
+                        <option value="0"></option>
+                        <option value="1">AstraZeneca</option>
+                        <option value="2">Moderna</option>
+                        <option value="3">Vero Cell</option>
+                        <option value="4">Pfize</option>
+                        <option value="5">Khác</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left:20px;vertical-align:middle"><label> Ghi chú</label> </td>
+                <td style="padding-left:20px" colspan="3">
+                    <textarea rows="5" cols="4" formControlName="ghichu" placeholder="nhap ghi chu" class="form-control" id="txtGhiChu"></textarea>
+                </td>
+            </tr>
+
+            <div class="row col-md-12" style="text-align:center">
+                <button class="btn btn-warning" (click)="add()"><i class="fa fa-save"></i> Gửi thông tin</button>
+            </div>
+
+        </tbody>
+    </table>
+</form>
+
